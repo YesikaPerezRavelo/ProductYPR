@@ -1,5 +1,5 @@
 import express from "express";
-import { ManagerProducts, ProductManager } from "./productManager.js";
+import { ProductManager } from "./productManager.js";
 
 const MU = new ProductManager("products.json");
 const app = express();
