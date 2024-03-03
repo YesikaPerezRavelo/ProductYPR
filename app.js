@@ -21,7 +21,7 @@ app.get("/products/:id", async (req, res) => {
   const productId = req.params.id;
 
   if (!productId) {
-    res.status(400).send({ error: "Invalid product ID" });
+    res.status(400).send({ error: "ID incorrecto" });
     return;
   }
 
@@ -30,11 +30,11 @@ app.get("/products/:id", async (req, res) => {
   if (product) {
     res.send(product);
   } else {
-    res.status(404).send({ error: "Product not found" });
+    res.status(404).send({ error: "Producto no encontrado" });
   }
 });
 
 const PORT = 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Servidor activo http://localhost:${PORT}`);
 });
