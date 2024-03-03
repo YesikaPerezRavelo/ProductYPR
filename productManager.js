@@ -6,7 +6,7 @@ export class ProductManager {
   }
 
   async addProduct(product) {
-    const newProduct = {
+    const NewProduct = {
       Id: product.Id ?? "Sin id",
       Title: product.Name ?? "Sin Nombre",
       Apellido: product.LastName ?? "Sin Apellido",
@@ -17,7 +17,7 @@ export class ProductManager {
     };
 
     const products = await this.FindProduct();
-    products.push(newProduct);
+    products.push(NewProduct);
 
     try {
       await fs.promises.writeFile(
@@ -27,16 +27,18 @@ export class ProductManager {
 
       console.log("Producto creado correctamente");
     } catch (e) {
-      console.error("Error al crear el nuevo producto\n", e);
+      console.error("Error al crear el nuevo prodcuto\n", e);
     }
   }
 
   async FindProduct() {
     try {
       const products = await fs.promises.readFile(this.data, "utf-8");
+
       return JSON.parse(products);
     } catch (error) {
       console.error(error);
+
       return [];
     }
   }

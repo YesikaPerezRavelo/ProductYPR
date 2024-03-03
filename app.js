@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (req, res) => {
+app.get(["/", "/products"], async (req, res) => {
   const { limit } = req.query;
 
   let products = await MU.FindProduct();
@@ -17,7 +17,24 @@ app.get("/", async (req, res) => {
   res.send(products);
 });
 
+app.get("/products/:id", async (req, res) => {
+  const productId = req.params.id;
+
+  if (!productId) {
+    res.status(400).send({ error: "Invalid product ID" });
+    return;
+  }
+
+  const product = await MU.FindProductById(productId);
+
+  if (product) {
+    res.send(product);
+  } else {
+    res.status(404).send({ error: "Product not found" });
+  }
+});
+
 const PORT = 8080;
 app.listen(PORT, () => {
-  console.log(`Servidor activo en http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
