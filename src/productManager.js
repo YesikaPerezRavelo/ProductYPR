@@ -24,9 +24,10 @@ export class ProductManager {
         this.data,
         JSON.stringify(products, null, "\t")
       );
-      console.log("Producto creado correctamente");
+      return "Producto creado correctamente!";
     } catch (e) {
       console.error("Error al crear el nuevo producto\n", e);
+      return "Error al crear el nuevo producto";
     }
   }
 

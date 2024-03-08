@@ -11,6 +11,18 @@ app.get("/api/products", async (req, res) => {
   res.send(await PM.GetAllProducts());
 });
 
+app.get("/api/products/:oid", async (req, res) => {
+  const oid = req.params.oid;
+  const products = await PM.GetAllProducts();
+  const product = products.find((p) => p.id == oid);
+
+  if (!product) {
+    res.status(404).send("Product not found");
+  } else {
+    res.json(product);
+  }
+});
+
 app.post("/api/products", async (req, res) => {
   const response = await PM.AddProduct(req.body);
   res.status(201).send(response);
