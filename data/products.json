@@ -16,14 +16,5 @@
 		"thumbnail": "Imagen2",
 		"code": "abc122",
 		"stock": "20"
-	},
-	{
-		"id": 3,
-		"title": "Titulo3",
-		"description": "Description3",
-		"price": "300",
-		"thumbnail": "Imagen3",
-		"code": "abc123",
-		"stock": "30"
 	}
 ]

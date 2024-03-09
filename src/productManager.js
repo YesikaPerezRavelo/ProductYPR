@@ -55,22 +55,22 @@ export class ProductManager {
     let productUpdated = {};
 
     for (let key in products) {
-      if (products[key].id === id) {
+      if (products[key].id == id) {
         products[key].title = product.title
           ? product.title
-          : product[key].title;
+          : products[key].title;
         products[key].description = product.description
           ? product.description
-          : product[key].description;
+          : products[key].description;
         products[key].price = product.price
           ? product.price
-          : product[key].price;
-        products[key].code = product.code ? product.code : product[key].code;
+          : products[key].price;
+        products[key].code = product.code ? product.code : products[key].code;
         products[key].stock = product.stock
           ? product.stock
-          : product[key].stock;
+          : products[key].stock;
 
-        productUpdated = product[key];
+        productUpdated = products[key];
       }
     }
 
